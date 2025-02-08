@@ -1,0 +1,17 @@
+
+select {
+    min-width: 80px;
+    height: 30px;
+    border: 1px solid #e2e2e2;
+    background-color: #eee;
+
+    padding-left: 10px;
+}
+
+input[type='number'] {
+    width: 100px;
+}
+
+.maxwidth {
+    width: 100%;
+}

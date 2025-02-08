@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <title>Sign Maker v2.0</title>
+        <link href="css/page.css" rel="stylesheet" type="text/css" />
+        <link href="css/elements.css" rel="stylesheet" type="text/css" />
+        <link href="css/sign.css" rel="stylesheet" type="text/css" />
+
+        <script src="js/dom-to-image.js" type="text/javascript"></script>
+        <script src="js/sign.js" type="text/javascript"></script>
+        <script src="js/process.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="controlpanel">
+            <h1>MUTCD Sign Builder</h1>
+            <div class="form">
+                <div class="formelement formgroup">
+                    <select id="signtype" onchange="changeTypeOfSign();">
+                        <option selected>Guide Sign</option>
+                        <option>Distance Sign</option>
+                    </select>
+                    <select id="signcolor" onchange="changeColor();">
+                        <option selected>Green</option>
+                        <option>Blue</option>
+                        <option>White</option>
+                        <option>Brown</option>
+                    </select>
+                    <input type="number" placeholder="Exit Number" onchange="updateSign();"/>
+                </div>
+                <div class="formelement shieldform">
+                    <h2>Shields</h2>
+                    <select id="shieldPosition" onchange="changeShieldPos();">
+                        <option selected>Top</option>
+                        <option>Left</option>
+                        <option>Right</option>
+                    </select>
+                    <div class="shieldtable">
+                    </div>
+                    <input id="newshield" type="button" value="+ New Shield" onclick="addShield();"/>
+                </div>
+                <div class="formelement">
+                    <h2>Road Names</h2>
+                    <div class="roadNamesContainer">
+                        
+                    </div>
+                    <div class="roadNameForm">
+                        <input type="text" id="roadNameInput" placeholder="Road Name" />
+                        <input type="button" value="Add Road Name" onclick="addRoadName();" />
+                    </div>
+                </div>
+                
+                <div class="formelement">
+                    <h2>Control Cities</h2>
+                    <div class="controlcitiesform active">
+                        <input id="ccinput1" type="text" placeholder="line 1" data-line1="1" onkeyup="updateCC();"/>
+                        <input id="ccinput2" type="text" placeholder="line 2" data-line1="2" onkeyup="updateCC();"/>
+                        <input id="ccinput3" type="text" placeholder="line 3" data-line1="3" onkeyup="updateCC();"/>
+                        <input id="ccinput4" type="text" placeholder="line 4" data-line1="4" onkeyup="updateCC();"/>
+                        <input id="bottomText" type="text" placeholder="Bottom Text" data-line1="5" onkeyup="updateCC();"/>
+                    </div>
+                    <div class="distancesform">
+                        <input id="dcityinput1" class="city" type="text" placeholder="line 1" data-line1="1" onkeyup="updateDistances();"/><input id="ddinput1" class="distance" type="text" placeholder="distance" data-line1="1" onkeyup="updateDistances();"/><input id="dunitsinput1" class="units" type="text" placeholder="units" data-line1="1" value="km" onkeyup="updateDistances();"/>
+                        <input id="dcityinput2" class="city" type="text" placeholder="line 2" data-line1="2" onkeyup="updateDistances();"/><input id="ddinput2" class="distance" type="text" placeholder="distance" data-line1="2" onkeyup="updateDistances();"/><input id="dunitsinput2" class="units" type="text" placeholder="units" data-line1="2" value="km" onkeyup="updateDistances();"/>
+                        <input id="dcityinput3" class="city" type="text" placeholder="line 3" data-line1="3" onkeyup="updateDistances();"/><input id="ddinput3" class="distance" type="text" placeholder="distance" data-line1="3" onkeyup="updateDistances();"/><input id="dunitsinput3" class="units" type="text" placeholder="units" data-line1="3" value="km" onkeyup="updateDistances();"/>
+                        <input id="dcityinput4" class="city" type="text" placeholder="line 4" data-line1="4" onkeyup="updateDistances();"/><input id="ddinput4" class="distance" type="text" placeholder="distance" data-line1="4" onkeyup="updateDistances();"/><input id="dunitsinput4" class="units" type="text" placeholder="units" data-line1="4" value="km" onkeyup="updateDistances();"/>
+                    </div>
+                </div>
+
+                <div class="formelement">
+                    <h2>Arrows</h2>
+                    <label>Position: </label>
+                    <select id="signPosition" onchange="changeArrows();">
+                        <option>Left</option>
+                        <option selected>Bottom</option>
+                        <option>Right</option>
+                    </select>
+                    <select id="arrowType" onchange="changeArrows();">
+                        <option selected>None</option>
+                        <option>slideLeft</option>
+                        <option>slideRight</option>
+                        <option>upArrow</option>
+                        <option>downArrow</option>
+                        <option>leftArrow</option>
+                        <option>leftUpArrow</option>
+                        <option>rightArrow</option>
+                        <option>rightUpArrow</option>
+
+                        <option>bigLeft</option>
+                        <option>bigRight</option>
+                    </select>
+                    <label>Exit Only: </label>
+                    <input type="checkbox" id="isExitOnly" onchange="changeArrows();"/>
+                    <br/>
+                    <label>Arrows: </label>
+                    <input type="number" id="guideArrowLanes" name="guideArrowLanes" min=1 max=6 onBlur="changeArrows();" value="1" />
+                    <br/>
+                    <label>Text: </label>
+                    <input type="text" id="exitTextbox" onchange="changeArrows();" />
+                </div>
+            </div>
+            <div class="formbuttons">
+                <input type="button" value="Download Sign" onclick="downloadSign();"/>
+                <input type="button" value="Download Exit Tab" />
+            </div>
+        </div>
+        <div class="viewport">
+            <div class="signcontainer green">
+                <!-- SIGN CONTENT RENDERS HERE -->
+            </div>
+        </div>
+    </body>
+</html>
