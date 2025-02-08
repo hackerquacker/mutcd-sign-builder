@@ -18,13 +18,13 @@
                         <option selected>Guide Sign</option>
                         <option>Distance Sign</option>
                     </select>
-                    <select id="signcolor" onchange="changeColor();">
+                    <select id="signcolour" onchange="changeColour();">
                         <option selected>Green</option>
                         <option>Blue</option>
                         <option>White</option>
                         <option>Brown</option>
                     </select>
-                    <input type="number" placeholder="Exit Number" onchange="updateSign();"/>
+                    <input type="text" id="exitNumber" placeholder="Exit Number" onkeyup="updateExitTab();"/>
                 </div>
                 <div class="formelement shieldform">
                     <h2>Shields</h2>
@@ -91,10 +91,10 @@
                     <input type="checkbox" id="isExitOnly" onchange="changeArrows();"/>
                     <br/>
                     <label>Arrows: </label>
-                    <input type="number" id="guideArrowLanes" name="guideArrowLanes" min=1 max=6 onBlur="changeArrows();" value="1" />
+                    <input type="number" id="guideArrowLanes" name="guideArrowLanes" min=1 max=6 onchange="changeArrows();" value="1" />
                     <br/>
                     <label>Text: </label>
-                    <input type="text" id="exitTextbox" onchange="changeArrows();" />
+                    <input type="text" id="exitTextbox" onkeyup="changeArrows();" />
                 </div>
             </div>
             <div class="formbuttons">
@@ -103,8 +103,10 @@
             </div>
         </div>
         <div class="viewport">
-            <div class="signcontainer green">
-                <!-- SIGN CONTENT RENDERS HERE -->
+            <div class="signWithExit">
+                <div class="signcontainer green">
+                    <!-- SIGN CONTENT RENDERS HERE -->
+                </div>
             </div>
         </div>
     </body>

@@ -426,21 +426,97 @@ class Arrows {
     }
 }
 
+/**
+ * This class handles data and rendering for the Exit Tab.
+ */
+class ExitTab {
+
+    constructor(colour){
+        this.exitNumber = 0;
+        this.render = false;
+
+        this.nzStyle = false;
+
+        this.colour = colour;
+    }
+
+    /**
+     * Sets the exit number. Also activates the exit tab, so it is rendered.
+     * @param {string | number} number Sets the Exit Number
+     */
+    setExitNumber(number){
+        this.exitNumber = new String(number).replaceAll(".", "·");
+        this.render = true;
+    }
+
+    /**
+     * Sets whether the exit tab is rendered or not
+     * @param {boolean} render true means the exit tab is rendered
+     */
+    setRender(render){
+        this.render = render;
+    }
+
+    /**
+     * Changes the exit tab background colour. Will change when next re-rendered.
+     * @param {string} colour Colour for the exit tab background.
+     */
+    setColour(colour) {
+        this.colour = colour;
+    }
+
+    /**
+     * @returns {boolean} true if the tab should be rendered.
+     */
+    shouldRender(){
+        return this.render;
+    }
+
+    build(){
+        const exitt = document.createElement("div");
+        exitt.className = `exitTab ${this.colour}`;
+        if (this.nzStyle)
+            exitt.className += ` nzStyle`;  // puts a border all around the sign, makes it a seperate sign for an add on.
+
+        const exitText = document.createElement("span");
+        exitText.className = "exitText";
+        exitText.innerText = "EXIT";
+        exitt.appendChild(exitText);
+
+        const exitNum = document.createElement("span");
+        exitNum.className = "exitNumber";
+        exitNum.innerText = this.exitNumber;
+        exitt.appendChild(exitNum);
+
+        return exitt;
+    }
+}
+
 class Sign {
 
-    constructor(color){
-        this.signColor = color;
+    constructor(colour){
+        this.signColour = colour;
 
         this.shields = [];
         this.names = [];
         this.controlCities = [];
         this.arrows = new Arrows();
+        this.exitTab = new ExitTab(this.signColour);
 
         this.shieldPos = "top";
     }
 
-    getSignColor(){
-        return this.signColor;
+    /**
+     * Sets the sign and exit tab background color.
+     * @param {string} colour The colour to set the sign back to.
+     */
+    setSignColour(colour){
+        this.signColour = colour;
+        this.exitTab.setColour(colour);
+    }
+
+    getSignColour(){
+        return this.signColour;
     }
 
     addShield(shield){
@@ -522,9 +598,29 @@ class Sign {
     }
 
 
+    /**
+     * @returns {ExitTab} the Exit Tab object
+     */
+    getExitTab(){
+        return this.exitTab;
+    }
+
+
     build(){
+        const signWithExit = document.querySelector("div.signWithExit");
+
+        // render the exit tab
+        const exitTab = document.querySelector("div.exitTab");
+        if (exitTab !== null)
+            signWithExit.removeChild(exitTab);
+
+        if (this.exitTab.shouldRender()){
+            signWithExit.prepend(this.exitTab.build());
+        }
+
+        // render the actual sign
         const signcont = document.querySelector("div.signcontainer");
-        signcont.className = "signcontainer " + this.getSignColor();
+        signcont.className = "signcontainer " + this.getSignColour();
 
         const sign = document.createElement("div");
         sign.className = "sign";

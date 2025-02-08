@@ -10,7 +10,7 @@ let sign = new Sign("green");
 let typeOfSign = "Guide Sign";
 
 const updateSign = function(){
-    sign.signColor = document.querySelector("#signcolor").value.toLowerCase();
+    sign.setSignColour(document.querySelector("#signcolour").value.toLowerCase());
 }
 
 /**
@@ -34,7 +34,7 @@ const appendOption = function(selectElmt, value, {selected = false} = {}, text) 
 const shieldTypeText = ShieldType;
 
 const changeTypeOfSign = function(){
-    sign = new Sign(document.querySelector("#signcolor").value.toLowerCase());
+    sign = new Sign(document.querySelector("#signcolour").value.toLowerCase());
     sign.build();
 
     const value = document.querySelector("#signtype").value;
@@ -58,9 +58,9 @@ const addShield = function(){
     sign.build();
 }
 
-const changeColor = function(){
-    const signColor = document.querySelector("#signcolor").value.toLowerCase();
-    sign.signColor = signColor;
+const changeColour = function(){
+    const signColour = document.querySelector("#signcolour").value.toLowerCase();
+    sign.setSignColour(signColour);
     sign.build();
     updateForm();
 }
@@ -182,6 +182,17 @@ const changeExitOnlyStatus = function(){
 
 }
 
+const updateExitTab = function(){
+    const exitNum = document.querySelector("#exitNumber").value;
+
+    if (exitNum === null || exitNum === "")
+        sign.getExitTab().setRender(false);
+    else
+        sign.getExitTab().setExitNumber(exitNum);
+
+    sign.build();
+}
+
 const updateForm = function(){
 
     const shieldTable = document.querySelector("div.shieldtable");
@@ -257,3 +268,10 @@ const updateForm = function(){
     }
 
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    sign.addControlCity(new ControlCity("New Sign"));
+    sign.build();
+    updateForm();
+});
