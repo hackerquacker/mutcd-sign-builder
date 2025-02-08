@@ -1,22 +1,65 @@
-
+/* Add your shields to this object. Key is the text that will render in the selection box. Value is the name of your shield in the img/shields folder (without the .png) */
 const ShieldType = {
     Motorway : "MWY",
     Highway : "HWY",
     Route : "RTE"
 };
 
+
+const ArrowOptions = {
+    slideLeft : "h",
+    slideRight : "H",
+    upArrow : "5",      // Arrows Two = 4
+    downArrow : "%",    // Arrows Two = %
+    leftArrow : "j",
+    leftUpArrow : "4",
+    rightArrow : "J",
+    rightUpArrow : "$",
+
+    bigLeft : "1",      // Arrows Two
+    bigRight : "!",     // Arrows Two
+
+    laneLeftArrow : "0",
+    laneLeftStraightArrow : "=",
+    laneRightStraightArrow : "+",
+    laneRightArrow : ")",
+    laneClosedArrow : "P",
+    None: ""
+}
+
+const ArrowSide = {
+    bottom : "bottom",
+    left : "left",
+    right : "right"
+}
+
+/**
+ * This class handles rendering of a shield.
+ */
 class Shield {
 
+    /**
+     * @param {ShieldType | string} type The type of shield. This is the name of the shield file (without .png)
+     * @param {string | number} number The route number for this shield
+     * @param {string} direction The Shield banner
+     */
     constructor(type, number, direction) {
         this.type = type;
         this.number = number;
         this.direction = direction !== null ? direction : "";
     }
 
+    /**
+     * @returns The name of the shield file
+     */
     getType(){
         return this.type;
     }
 
+    /**
+     * @param {ShieldType | string} type The name of the shield file (without .png)
+     * @returns true if successful. If false, then the type parameter was null.
+     */
     setType(type) {
         if (type === null)
             return false;
@@ -25,10 +68,17 @@ class Shield {
         return true;
     }
 
+    /**
+     * @returns The route number
+     */
     getNumber(){
         return this.number;
     }
 
+    /**
+     * @param {string | number} num The route number
+     * @returns true if successful. If false, then the num parameter was null.
+     */
     setNumber(num){
         if (num === null)
             return false;
@@ -37,10 +87,16 @@ class Shield {
         return true;
     }
 
+    /**
+     * @returns The shield banner text
+     */
     getDirection(){
         return this.direction;
     }
 
+    /**
+     * @param {string} dir The shield banner text. If this is 'None' or empty the banner text will be hidden.
+     */
     setDirection(dir){
         if (dir === null || dir === "None"){
             this.direction = "";
@@ -51,7 +107,9 @@ class Shield {
     }
 
     /**
-     * Builds the structure of the shield element and returns the html object
+     * Builds the structure of the shield element and returns the html object. This shouldn't be necessary to call outside
+     * of this file.
+     * @param {string} position The CSS class name for this shield group.
      * @returns HTML div element
      */
     build(position){
@@ -68,9 +126,7 @@ class Shield {
 
         const label = document.createElement("label");
         label.innerText = this.getNumber();
-        if (this.getNumber().length > 2){
-            label.className = "long";
-        }
+        if (this.getNumber().length > 2) label.className = "long";
 
         shield.appendChild(img);
         shield.appendChild(label);
@@ -87,6 +143,9 @@ class Shield {
     }
 }
 
+/**
+ * Control City prototype object.
+ */
 class ControlCityProto {
 
     constructor(){
@@ -97,22 +156,37 @@ class ControlCityProto {
         this.distanceSign = false;
     }
 
+    /**
+     * @returns The City Name
+     */
     getName(){
         return this.name;
     }
 
+    /**
+     * @returns Distance to the city (if specified)
+     */
     getDistance(){
         return this.distance.replace(".", "·");
     }
 
+    /**
+     * @returns The distance units to the city (if specified)
+     */
     getUnits() {
         return this.units;
     }
 
+    /**
+     * @returns {boolean} if this sign has distance information
+     */
     isDistanceSign(){
         return this.distanceSign;
     }
 
+    /**
+     * @returns {HTMLElement} the HTML element generated
+     */
     build(){
         return null;
     }
@@ -120,6 +194,9 @@ class ControlCityProto {
 
 class ControlCity extends ControlCityProto {
 
+    /**
+     * @param {string} name The Name of the city
+     */
     constructor(name){
         super();
         this.name = name;
@@ -136,6 +213,11 @@ class ControlCity extends ControlCityProto {
 
 class DistanceToCity extends ControlCityProto {
 
+    /**
+     * @param {string} name The name of the city
+     * @param {string | number} dist The distance to the city
+     * @param {string} units The distance unit
+     */
     constructor(name, dist, units){
         super();
         this.name = name;
@@ -167,6 +249,9 @@ class DistanceToCity extends ControlCityProto {
 }
 
 class BottomText extends ControlCityProto {
+    /**
+     * @param {string} text Text to add
+     */
     constructor(text){
         super();
         this.name = text;
@@ -178,33 +263,6 @@ class BottomText extends ControlCityProto {
         parag.innerText = this.getName();
         return parag;
     }
-}
-
-const ArrowOptions = {
-    slideLeft : "h",
-    slideRight : "H",
-    upArrow : "5",      // Arrows Two = 4
-    downArrow : "%",    // Arrows Two = %
-    leftArrow : "j",
-    leftUpArrow : "4",
-    rightArrow : "J",
-    rightUpArrow : "$",
-
-    bigLeft : "1",  // Arrows Two
-    bigRight : "!",     // Arrows Two
-
-    laneLeftArrow : "0",
-    laneLeftStraightArrow : "=",
-    laneRightStraightArrow : "+",
-    laneRightArrow : ")",
-    laneClosedArrow : "P",
-    None: ""
-}
-
-const ArrowSide = {
-    bottom : "bottom",
-    left : "left",
-    right : "right"
 }
 
 class Arrows {
