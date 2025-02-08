@@ -21,7 +21,7 @@ This can be done by adding new strings into the `directions` table in [js/proces
 ## Project implementation
 This project is a work-in-progress. Some of these features may never be added, depending on my personal needs for this project.
 - [x] Render sign with custom text and basic arrows
-- [ ] Add Exit Tabs
+- [x] Add Exit Tabs
 - [ ] Make it easier to customise sign colours, road name colours, banner colours.
 - [ ] Expand arrows:
     - [ ] Allow Exit only signs to have a user specified number of arrows instead of 1
