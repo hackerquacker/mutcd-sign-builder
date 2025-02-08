@@ -1,4 +1,11 @@
 
+const directions = [
+    "None", "North", "South", "East", "West"
+];
+
+
+
+
 let sign = new Sign("green");
 let typeOfSign = "Guide Sign";
 
@@ -34,15 +41,7 @@ const appendOption = function(selectElmt, value, {selected = false} = {}, text) 
     selectElmt.appendChild(optionElmt);
 };
 
-const directions = [
-    "None", "North", "South", "East", "West"
-];
-
-const shieldTypeText = {
-    "Motorway" : "MWY",
-    "Highway" : "HWY",
-    "Route" : "RTE"
-};
+const shieldTypeText = ShieldType;
 
 const changeTypeOfSign = function(){
     sign = new Sign(document.querySelector("#signcolor").value.toLowerCase());

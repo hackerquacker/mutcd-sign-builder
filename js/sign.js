@@ -2,7 +2,7 @@
 const ShieldType = {
     Motorway : "MWY",
     Highway : "HWY",
-    Route : "RTE",
+    Route : "RTE"
 };
 
 class Shield {
