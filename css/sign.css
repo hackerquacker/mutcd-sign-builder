@@ -349,4 +349,5 @@ div.exitTab span.exitNumber {
     font-family: 'Series E';
     font-size: 1.5rem;
     padding-left: 0.5rem;
+    text-transform: uppercase;
 }

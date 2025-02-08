@@ -184,6 +184,8 @@ const changeExitOnlyStatus = function(){
 
 const updateExitTab = function(){
     const exitNum = document.querySelector("#exitNumber").value;
+    const seperateSign = document.querySelector("#seperateExitTab").checked;
+    sign.getExitTab().nzStyle = seperateSign;
 
     if (exitNum === null || exitNum === "")
         sign.getExitTab().setRender(false);

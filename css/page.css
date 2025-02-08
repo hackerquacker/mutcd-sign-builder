@@ -347,3 +347,8 @@ div.roadNameForm input[type='text'] {
     align-items: center;
     flex-wrap: nowrap;
 }
+
+#exitNumber {
+    min-width: 50px;
+    width: 60px;
+}
