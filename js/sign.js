@@ -578,20 +578,3 @@ class Sign {
     }
 
 }
-
-
-
-
-function testSign() {
-    sign = new Sign("green");
-    sign.addShield(new Shield(ShieldType.Motorway, "2", "North"));
-    sign.addControlCity(new ControlCity("Anka City"));
-
-    sign.getArrows().addArrow(ArrowOptions.downArrow);
-    sign.getArrows().addArrow(ArrowOptions.downArrow);
-    sign.getArrows().addArrow(ArrowOptions.downArrow);
-    sign.getArrows().addArrow(ArrowOptions.downArrow);
-    sign.getArrows().setExitOnly(false);
-
-    sign.build();
-}

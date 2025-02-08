@@ -10,17 +10,7 @@ let sign = new Sign("green");
 let typeOfSign = "Guide Sign";
 
 const updateSign = function(){
-
     sign.signColor = document.querySelector("#signcolor").value.toLowerCase();
-
-
-    /*const sign2 = new Sign(signColor);
-
-    sign2.addControlCity(new DistanceToCity("Anka City", "10"))
-    sign2.addControlCity(new DistanceToCity("Criston", "16"))
-    sign2.addControlCity(new DistanceToCity("Jungleton", "68"))
-
-    sign2.build();*/
 }
 
 /**
@@ -95,9 +85,6 @@ const deleteShield = function(){
 }
 
 const updateCC = function(){
-    /*if (typeOfSign !== "Guide Sign"){
-        
-    }*/
     sign.controlCities = [];
 
     for (let i = 0; i < 4; i++){
@@ -157,9 +144,6 @@ const removeRoadName = function() {
 const downloadSign = function() {
     setTimeout(() => {
         domtoimage.toPng(document.querySelector("div.signcontainer")).then(dataUrl => {
-            //var img = new Image();
-            //img.src = dataUrl;
-            //document.body.appendChild(img);
             const l = document.createElement("a");
             l.href = dataUrl;
             l.download = "sign.png";
@@ -208,7 +192,6 @@ const updateForm = function(){
         const divcol = document.createElement("div");
         divcol.className = "shieldcol";
 
-        //divcol.innerHTML = "<select id='shield0_type'><option value='MWY'>Motorway</option><option value='HWY'>Highway</option><option value='RTE'>Route</option></select>";
         const shieldSelect = document.createElement("select");
         shieldSelect.id = "shield"+i+"_shieldType";
         shieldSelect.dataset.shieldIndex = i;
