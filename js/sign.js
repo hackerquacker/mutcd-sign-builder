@@ -621,6 +621,9 @@ class Sign {
         // render the actual sign
         const signcont = document.querySelector("div.signcontainer");
         signcont.className = "signcontainer " + this.getSignColour();
+        
+        if (!this.exitTab.nzStyle && this.exitTab.shouldRender())
+            signcont.className += " attachedExitTab";
 
         const sign = document.createElement("div");
         sign.className = "sign";

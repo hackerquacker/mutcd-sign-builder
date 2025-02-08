@@ -30,6 +30,9 @@
 
     position: relative;
 }
+.viewport div.signcontainer.attachedExitTab {
+    border-top-left-radius: 0;
+}
 
 div.signcontainer div.sign {
     display: flex;
@@ -328,9 +331,10 @@ div.exitTab {
     border-bottom: none;
     border-top-left-radius: 0.75rem;
     border-top-right-radius: 0.75rem;
-    margin-left: 10px;
-    margin-right: 10px;
     width: max-content;
+    
+    /*margin-left: 10px;
+    margin-right: 10px;*/
 
     min-height: 2.25rem;
     padding: 0 0.5rem 0rem 0.5rem;

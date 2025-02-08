@@ -154,6 +154,19 @@ const downloadSign = function() {
         })
     }, 100);
 }
+const downloadExitTab = function() {
+    setTimeout(() => {
+        domtoimage.toPng(document.querySelector("div.exitTab")).then(dataUrl => {
+            const l = document.createElement("a");
+            l.href = dataUrl;
+            l.download = "exit.png";
+            l.style.visibility = "hidden";
+            document.body.appendChild(l);
+            l.click();
+            document.body.removeChild(l);
+        })
+    }, 100);
+}
 
 const changeArrows = function(){
     const position = document.querySelector("#signPosition").value.toLowerCase();
