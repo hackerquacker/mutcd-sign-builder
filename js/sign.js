@@ -265,6 +265,40 @@ class BottomText extends ControlCityProto {
     }
 }
 
+class ExitText extends ControlCityProto {
+    /**
+     * @param {string} text Text to add
+     */
+    constructor(){
+        super();
+        this.name = "EXIT";
+    }
+
+    build() {
+        const parag = document.createElement("p");
+        parag.className = "center exitSignText";
+        parag.innerText = this.getName();
+        return parag;
+    }
+}
+
+class ExitNumberText extends ControlCityProto {
+    /**
+     * @param {string} text Text to add
+     */
+    constructor(num){
+        super();
+        this.name = num;
+    }
+
+    build() {
+        const parag = document.createElement("p");
+        parag.className = "center big";
+        parag.innerText = this.getName();
+        return parag;
+    }
+}
+
 class Arrows {
 
     constructor(){
@@ -373,6 +407,7 @@ class Arrows {
                 for (let i = 0; i < this.arrows.length; i++){
                     const ele = document.createElement("span");
                     ele.className = "arrow";
+                    ele.className += ` ${this.side}_${this.arrows[i]}`
 
                     if (i-1 === Math.floor(this.arrows.length/2)-1 && this.arrows.length > 1 && this.exitText !== ""){
                         ele.style.marginLeft = "0rem";

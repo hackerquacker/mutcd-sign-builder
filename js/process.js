@@ -35,17 +35,33 @@ const shieldTypeText = ShieldType;
 
 const changeTypeOfSign = function(){
     sign = new Sign(document.querySelector("#signcolour").value.toLowerCase());
-    sign.build();
 
     const value = document.querySelector("#signtype").value;
 
     if (value === "Guide Sign"){
         document.querySelector("div.controlcitiesform").classList.add("active");
         document.querySelector("div.distancesform").classList.remove("active");
+        document.querySelector("div.exitForm").classList.remove("active");
+        document.querySelector("div.arrowformele").style.display = "block";
+        document.querySelector("div.roadnamesformele").style.display = "block";
     }else if (value === "Distance Sign"){
         document.querySelector("div.controlcitiesform").classList.remove("active");
         document.querySelector("div.distancesform").classList.add("active");
+        document.querySelector("div.exitForm").classList.remove("active");
+        document.querySelector("div.arrowformele").style.display = "none";
+        document.querySelector("div.roadnamesformele").style.display = "block";
+    }else if (value === "Exit Sign"){
+        document.querySelector("div.controlcitiesform").classList.remove("active");
+        document.querySelector("div.distancesform").classList.remove("active");
+        document.querySelector("div.exitForm").classList.add("active");
+        sign.addControlCity(new ExitText());
+        sign.getArrows().setArrow(ArrowOptions.slideLeft);
+
+        document.querySelector("div.arrowformele").style.display = "none";
+        document.querySelector("div.roadnamesformele").style.display = "none";
     }
+
+    sign.build();
 
     typeOfSign = value;
 
@@ -207,6 +223,19 @@ const updateExitTab = function(){
 
     sign.build();
 }
+
+const updateExitSign = function() {
+    const exitNum = document.querySelector("#exitNumberInput").value;
+
+    sign = new Sign(document.querySelector("#signcolour").value.toLowerCase())
+    
+    sign.addControlCity(new ExitText());
+    sign.addControlCity(new ExitNumberText(exitNum));
+    sign.getArrows().setArrow(ArrowOptions.slideLeft);
+
+    sign.build();
+}
+
 
 const updateForm = function(){
 

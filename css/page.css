@@ -281,9 +281,6 @@ div.distancesform {
     flex-wrap: wrap;
     justify-content: center;
 }
-div.active {
-    display: flex;
-}
 div.distancesform input.city,
 div.distancesform input.distance,
 div.distancesform input.units {
@@ -311,6 +308,27 @@ div.distancesform input.units {
     text-align: left;
 }
 
+div.exitform {
+    display: none;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+div.exitform input[type='text']{
+    font-family: 'Series EM';
+    font-size: 12pt;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    appearance: none;
+    outline: none;
+}
+
+div.active {
+    display: flex;
+}
 
 div.roadNamesContainer {
     display: flex;

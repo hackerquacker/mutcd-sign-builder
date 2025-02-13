@@ -203,9 +203,19 @@ div.sign div.controlcities span.little {
     font-family: 'Series E';
     font-size: 1rem;
 }
+div.sign div.controlcities p.big {
+    font-family: 'Series E';
+    margin-top: 30px;
+    font-size: 1.75rem;
+}
 div.sign div.controlcities p.little {
     font-family: 'Series E';
     font-size: 1rem;
+}
+
+div.sign div.controlcities p.exitSignText {
+    font-family: 'Series E';
+    font-size: 1.5rem;
 }
 
 div.sign div.arrows {
@@ -243,6 +253,10 @@ div.sign div.arrows span.arrow {
 
     margin-left: 50px;
     margin-top: 0;
+}
+div.arrows span.arrow.bottom_h  {
+    transform: translateY(-15px);
+    font-size: 5rem !important;
 }
 div.sign div.arrows.exitOnly span.arrow {
     font-size: 3.5rem;

@@ -17,6 +17,7 @@
                     <select id="signtype" onchange="changeTypeOfSign();">
                         <option selected>Guide Sign</option>
                         <option>Distance Sign</option>
+                        <option>Exit Sign</option>
                     </select>
                     <select id="signcolour" onchange="changeColour();">
                         <option selected>Green</option>
@@ -39,7 +40,7 @@
                     </div>
                     <input id="newshield" type="button" value="+ New Shield" onclick="addShield();"/>
                 </div>
-                <div class="formelement">
+                <div class="formelement roadnamesformele">
                     <h2>Road Names</h2>
                     <div class="roadNamesContainer">
                         
@@ -65,9 +66,12 @@
                         <input id="dcityinput3" class="city" type="text" placeholder="line 3" data-line1="3" onkeyup="updateDistances();"/><input id="ddinput3" class="distance" type="text" placeholder="distance" data-line1="3" onkeyup="updateDistances();"/><input id="dunitsinput3" class="units" type="text" placeholder="units" data-line1="3" value="km" onkeyup="updateDistances();"/>
                         <input id="dcityinput4" class="city" type="text" placeholder="line 4" data-line1="4" onkeyup="updateDistances();"/><input id="ddinput4" class="distance" type="text" placeholder="distance" data-line1="4" onkeyup="updateDistances();"/><input id="dunitsinput4" class="units" type="text" placeholder="units" data-line1="4" value="km" onkeyup="updateDistances();"/>
                     </div>
+                    <div class="exitform">
+                        <input id="exitNumberInput" type="text" placeholder="Exit Number" onkeyup="updateExitSign();"/>
+                    </div>
                 </div>
 
-                <div class="formelement">
+                <div class="formelement arrowformele">
                     <h2>Arrows</h2>
                     <label>Position: </label>
                     <select id="signPosition" onchange="changeArrows();">
