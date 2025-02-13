@@ -216,6 +216,7 @@ div.sign div.controlcities p.little {
 div.sign div.controlcities p.exitSignText {
     font-family: 'Series E';
     font-size: 1.5rem;
+    letter-spacing: 4;
 }
 
 div.sign div.arrows {

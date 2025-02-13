@@ -167,7 +167,7 @@ class ControlCityProto {
      * @returns Distance to the city (if specified)
      */
     getDistance(){
-        return this.distance.replace(".", "·");
+        return this.distance.replaceAll("\.", "\·");
     }
 
     /**
