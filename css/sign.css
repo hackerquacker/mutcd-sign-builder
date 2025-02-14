@@ -201,7 +201,9 @@ div.sign div.controlcities span.right {
 }
 div.sign div.controlcities span.little {
     font-family: 'Series E';
-    font-size: 1rem;
+    font-size: 1.2rem;
+    margin-left: 5px;
+    letter-spacing: 2;
 }
 div.sign div.controlcities p.big {
     font-family: 'Series E';

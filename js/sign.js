@@ -236,7 +236,7 @@ class DistanceToCity extends ControlCityProto {
 
         const span1 = document.createElement("span");
         span1.className = "right";
-        span1.innerText = this.getDistance() + " ";
+        span1.innerText = this.getDistance();
 
         const span2 = document.createElement("span");
         span2.className = "little";
