@@ -39,26 +39,37 @@ const changeTypeOfSign = function(){
     const value = document.querySelector("#signtype").value;
 
     if (value === "Guide Sign"){
+        //document.querySelector("div.controlcitiesformele").classList.add("active");
+
+
         document.querySelector("div.controlcitiesform").classList.add("active");
         document.querySelector("div.distancesform").classList.remove("active");
-        document.querySelector("div.exitForm").classList.remove("active");
+        //document.querySelector("div.exitForm").classList.remove("active");
         document.querySelector("div.arrowformele").style.display = "block";
         document.querySelector("div.roadnamesformele").style.display = "block";
+        document.querySelector("div.controlcitiesformele").style.display = "block";
+        document.querySelector("div.exitForm").style.display = "none";
     }else if (value === "Distance Sign"){
         document.querySelector("div.controlcitiesform").classList.remove("active");
         document.querySelector("div.distancesform").classList.add("active");
         document.querySelector("div.exitForm").classList.remove("active");
         document.querySelector("div.arrowformele").style.display = "none";
         document.querySelector("div.roadnamesformele").style.display = "block";
+        document.querySelector("div.controlcitiesformele").style.display = "block";
+        document.querySelector("div.exitForm").style.display = "none";
     }else if (value === "Exit Sign"){
-        document.querySelector("div.controlcitiesform").classList.remove("active");
-        document.querySelector("div.distancesform").classList.remove("active");
-        document.querySelector("div.exitForm").classList.add("active");
+        //document.querySelector("div.controlcitiesform").classList.remove("active");
+        //document.querySelector("div.distancesform").classList.remove("active");
+        //document.querySelector("div.exitForm").classList.add("active");
+
+        
         sign.addControlCity(new ExitText());
         sign.getArrows().setArrow(ArrowOptions.slideLeft);
 
         document.querySelector("div.arrowformele").style.display = "none";
         document.querySelector("div.roadnamesformele").style.display = "none";
+        document.querySelector("div.controlcitiesformele").style.display = "none";
+        document.querySelector("div.exitForm").style.display = "flex";
     }
 
     sign.build();
@@ -211,6 +222,11 @@ const changeExitOnlyStatus = function(){
 
 }
 
+/**
+ * Refreshes and redraws the exit tab above the sign.
+ * 
+ * TODO: allow exit tab to display on the right
+ */
 const updateExitTab = function(){
     const exitNum = document.querySelector("#exitNumber").value;
     const seperateSign = document.querySelector("#seperateExitTab").checked;
@@ -224,14 +240,18 @@ const updateExitTab = function(){
     sign.build();
 }
 
+/**
+ * Refreshes and redraws the exit sign when "Exit Sign" type is selected.
+ */
 const updateExitSign = function() {
     const exitNum = document.querySelector("#exitNumberInput").value;
+    const rhdarrow = document.querySelector("#exitRHScheckbox").checked;
 
     sign = new Sign(document.querySelector("#signcolour").value.toLowerCase())
     
     sign.addControlCity(new ExitText());
     sign.addControlCity(new ExitNumberText(exitNum));
-    sign.getArrows().setArrow(ArrowOptions.slideLeft);
+    sign.getArrows().setArrow(rhdarrow ? ArrowOptions.slideRight : ArrowOptions.slideLeft);
 
     sign.build();
 }

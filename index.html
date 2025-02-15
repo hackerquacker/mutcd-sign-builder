@@ -53,7 +53,7 @@
                     </div>
                 </div>
                 
-                <div class="formelement">
+                <div class="formelement controlcitiesformele">
                     <h2>Control Cities</h2>
                     <div class="controlcitiesform active">
                         <input id="ccinput1" type="text" placeholder="line 1" data-line1="1" onkeyup="updateCC();"/>
@@ -68,9 +68,14 @@
                         <input id="dcityinput3" class="city" type="text" placeholder="line 3" data-line1="3" onkeyup="updateDistances();"/><input id="ddinput3" class="distance" type="text" placeholder="distance" data-line1="3" onkeyup="updateDistances();"/><input id="dunitsinput3" class="units" type="text" placeholder="units" data-line1="3" value="km" onkeyup="updateDistances();"/>
                         <input id="dcityinput4" class="city" type="text" placeholder="line 4" data-line1="4" onkeyup="updateDistances();"/><input id="ddinput4" class="distance" type="text" placeholder="distance" data-line1="4" onkeyup="updateDistances();"/><input id="dunitsinput4" class="units" type="text" placeholder="units" data-line1="4" value="km" onkeyup="updateDistances();"/>
                     </div>
-                    <div class="exitform">
+                    <!--<div class="exitform">
                         <input id="exitNumberInput" type="text" placeholder="Exit Number" onkeyup="updateExitSign();"/>
-                    </div>
+                    </div>-->
+                </div>
+                <div class="formelement exitform">
+                    <h2>Exit Information</h2>
+                    <input id="exitNumberInput" type="text" placeholder="Exit Number" onkeyup="updateExitSign();"/><br/>
+                    <label style="align-self: center;">Right Hand Arrow</label><input id="exitRHScheckbox" type="checkbox" placeholder="RHD" onchange="updateExitSign();"/>
                 </div>
 
                 <div class="formelement arrowformele">
